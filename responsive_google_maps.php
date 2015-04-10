@@ -46,7 +46,7 @@ class responsive_maps {
     public function register_scripts(){
 
         wp_register_script( 'googleMaps', 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=visualization' );
-        wp_register_script( 'responsiveMaps', plugins_url('responsive_google_maps/js/responsiveMaps.js' ),array('jquery','googleMaps'),'1.0.2',true);
+        wp_register_script( 'responsiveMaps', plugins_url( '/js/responsiveMaps.js', __FILE__ ),array('jquery','googleMaps'),'1.0.3',true);
 
     }
 

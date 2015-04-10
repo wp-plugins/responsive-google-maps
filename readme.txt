@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: Zaglov
+Contributors: Zaglov, imbaa
 Tags: responsive, google, google maps
 Requires at least: 3.0.1
 Tested up to: 4.1.1
