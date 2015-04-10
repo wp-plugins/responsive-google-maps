@@ -3,7 +3,7 @@ Contributors: Zaglov
 Tags: responsive, google, google maps
 Requires at least: 3.0.1
 Tested up to: 4.3
-Stable tag: trunk
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,7 +24,7 @@ The Plug-In requires at leas two values to work: the latitude and the longitude 
 
 If you need to use the Shortcode inside a theme, just use `<?php do_shortcode('[responsive_map lat="51.44303" lng="7.01247"]') ?>`.
 
-See it in action on [imbaa Kreativagentur](http://www.imbaa.de "imbaa Kreativagentur Essen")'s Site.
+See it in action on [imbaa Kreativagentur](http://www.imbaa.de "imbaa Kreativagentur Essen")'s site.
 
 Possible other Parameters:
 
