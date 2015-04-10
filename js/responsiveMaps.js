@@ -79,6 +79,7 @@ var responsiveMap = function(mapID){
 
 
 
+
         var mapOptions = {
             zoom: parseInt(args.zoom),
             center: new google.maps.LatLng(args.lat, args.lng),

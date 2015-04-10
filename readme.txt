@@ -3,7 +3,7 @@ Contributors: Zaglov, imbaa
 Tags: responsive, google, google maps
 Requires at least: 3.0.1
 Tested up to: 4.1.1
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,7 @@ Possible other Parameters:
 *   show_marker = true / Should a marker be displayed?
 *   title = null / Title of the Marker
 *   zoom_control = true / Enable or disable Zoom-Conrol
+*   pan_control = true / Enable or disable Pan-Conrol
 *   map_type_control = true / Enable or disable Map-Type-Conrol
 *   scale_control = true / Enable or disable Scale Control
 *   street_view_control = true / Enable or disable Street View
