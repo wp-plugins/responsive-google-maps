@@ -1,8 +1,8 @@
 /*!
  * jQuery Responsive Maps Plug-In
- * version: 1.0.2
+ * version: 1.0.5
  * Requires jQuery v1.5 or later
- * Copyright (c) 2015 Ilja Zaglov | imbaa Kreativagentur
+ * Copyright (c) 2015 Ilja Zaglov | imbaa Kreativagentur | http://www.imbaa.de
  * Licensed under GPL
  */
 
@@ -75,6 +75,7 @@ var responsiveMap = function(mapID){
             args.maptype = google.maps.MapTypeId.ROAD;
 
         }
+
 
 
 

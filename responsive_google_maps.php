@@ -5,7 +5,7 @@ defined('ABSPATH') or die("No script kiddies please!");
 
     Plugin Name: Responsive Google Maps
     Description: This Plug-In displays responsive and configurable Maps by Google Maps in your WordPress Site
-    Version: 1.0.3
+    Version: 1.0.6
     Author: Ilja Zaglov | imbaa Kreativagentur
     Author URI: http://www.imbaa.de
     Plugin URI: https://wordpress.org/plugins/responsive-google-maps/
@@ -46,7 +46,7 @@ class responsive_maps {
     public function register_scripts(){
 
         wp_register_script( 'googleMaps', 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=visualization' );
-        wp_register_script( 'responsiveMaps', plugins_url('responsive_google_maps/js/responsiveMaps.js' ),array('jquery','googleMaps'),'1.0.2',true);
+        wp_register_script( 'responsiveMaps', plugins_url( '/js/responsiveMaps.js', __FILE__ ),array('jquery','googleMaps'),'1.0.3',true);
 
     }
 
@@ -59,16 +59,16 @@ class responsive_maps {
             'zoom' => 10,
             'title' => null,
             'height' => '400px',
-            'zoom_control' => true,
-            'map_type_control' => true,
-            'scale_control' => true,
-            'street_view_control' => true,
-            'overview_map_control' => true,
-            'show_marker' => true,
-            'map_type' => 'road'
+            'zoom_control' => 1,
+            'map_type_control' => 1,
+            'scale_control' => 1,
+            'street_view_control' =>1,
+            'overview_map_control' => 1,
+            'show_marker' => 1,
+            'map_type' => 'road',
+            'pan_control' => 1
 
         ), $args );
-
 
 
 
@@ -84,14 +84,17 @@ class responsive_maps {
                             data-lat="'.$args['lat'].'"
                             data-lng="'.$args['lng'].'"
                             data-style="'.$args['style'].'"
-                            data-zoom="'.$args['zoom'].'",
-                            data-maptypecontrol="'.$args['map_type_control'].'",
-                            data-scalecontrol="'.$args['scale_control'].'",
-                            data-streetviewcontrol="'.$args['street_view_control'].'",
-                            data-overviewmapcontrol="'.$args['overview_map_control'].'",
-                            data-showmarker="'.$args['show_marker'].'",
+                            data-zoom="'.$args['zoom'].'"
+                            data-zoomcontrol="'.$args['zoom_control'].'"
+                            data-maptypecontrol="'.$args['map_type_control'].'"
+                            data-scalecontrol="'.$args['scale_control'].'"
+                            data-streetviewcontrol="'.$args['street_view_control'].'"
+                            data-overviewmapcontrol="'.$args['overview_map_control'].'"
+                            data-showmarker="'.$args['show_marker'].'"
                             data-maptype="'.$args['map_type'].'"
+                            data-pancontrol="'.$args['pan_control'].'"
                 ></div>';
+
 
         return $output;
 
