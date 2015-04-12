@@ -83,3 +83,4 @@ This can be quite frustrating. So the dragging feature is disabled on touchscree
 = 1.1.0 =
 * Enable or disable scrollwheel zooming.
 * Enable or disable map-dragging.
+* Fixed bug with title not showing on hovering over marker
