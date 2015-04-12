@@ -1,6 +1,6 @@
 /*!
  * jQuery Responsive Maps Plug-In
- * version: 1.0.5
+ * version: 1.1.0
  * Requires jQuery v1.5 or later
  * Copyright (c) 2015 Ilja Zaglov | imbaa Kreativagentur | http://www.imbaa.de
  * Licensed under GPL
@@ -13,13 +13,14 @@ var responsiveMap = function(mapID){
 
     var element = $('#'+mapID);
 
-
-
-
-
     var self = this;
 
     self.map = null;
+
+
+    self.isTouchDevice = function () {
+        return !!('ontouchstart' in window);
+    };
 
 
     self.init = function() {
@@ -65,6 +66,13 @@ var responsiveMap = function(mapID){
         }
 
 
+        if(self.isTouchDevice()) {
+            var draggable = false;
+        } else {
+            var draggable = args.draggable
+        }
+
+
 
         if(args.maptype == 'satellite'){
 
@@ -88,10 +96,10 @@ var responsiveMap = function(mapID){
             disableDoubleClickZoom: false,
             mapTypeControl: args.maptypecontrol,
             scaleControl:args.scalecontrol,
-            scrollwheel: false,
+            scrollwheel: args.scrollwheel,
             panControl: args.pancontrol,
             streetViewControl: args.streetviewcontrol,
-            draggable : false,
+            draggable : draggable,
             overviewMapControl: args.overviewmapcontrol,
             overviewMapControlOptions: {
                 opened: args.overviewmapcontrol
@@ -108,7 +116,7 @@ var responsiveMap = function(mapID){
             new google.maps.Marker({
                 position: new google.maps.LatLng(args.lat, args.lng),
                 map: self.map,
-                title: element.attr('title')
+                title: args.title
             });
 
         }
