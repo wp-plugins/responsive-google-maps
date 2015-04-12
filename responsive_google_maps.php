@@ -5,7 +5,7 @@ defined('ABSPATH') or die("No script kiddies please!");
 
     Plugin Name: Responsive Google Maps
     Description: This Plug-In displays responsive and configurable Maps by Google Maps in your WordPress Site
-    Version: 1.0.6
+    Version: 1.1.0
     Author: Ilja Zaglov | imbaa Kreativagentur
     Author URI: http://www.imbaa.de
     Plugin URI: https://wordpress.org/plugins/responsive-google-maps/
@@ -66,7 +66,9 @@ class responsive_maps {
             'overview_map_control' => 1,
             'show_marker' => 1,
             'map_type' => 'road',
-            'pan_control' => 1
+            'pan_control' => 1,
+            'draggable' => 0,
+            'scrollwheel' => 1
 
         ), $args );
 
@@ -93,6 +95,8 @@ class responsive_maps {
                             data-showmarker="'.$args['show_marker'].'"
                             data-maptype="'.$args['map_type'].'"
                             data-pancontrol="'.$args['pan_control'].'"
+                            data-scrollwheel="'.$args['scrollwheel'].'"
+                            data-draggable="'.$args['draggable'].'"
                 ></div>';
 
 

@@ -3,7 +3,7 @@ Contributors: Zaglov, imbaa
 Tags: responsive, google, google maps
 Requires at least: 3.0.1
 Tested up to: 4.1.1
-Stable tag: 1.0.6
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,11 +42,44 @@ Possible other Parameters:
 *   street_view_control = true / Enable or disable Street View
 *   overview_map_control = true / Enable or disable Map Control
 *   map_type (str) = road / Set Map Typ to Road („road“) or satellite („sattelite“)
+*   scrollwheel = true / Enable or disable zooming via scrollwheel
+*   draggable = false / Enable or disable draggable map. On Touchscreen devices dragging is disabled
 
+Coming Soon:
+
+Custom marker images
 
 == Installation ==
-
 
 1. Upload the Plug-In Direcotry into the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Use the [responsive_map] Shortcode in your Site
+
+== Frequently Asked Questions ==
+
+= The map controls do not display properly. What can I do!? =
+
+This is a common issues on responsive sites. Try to use the following CSS-Code within your Themes style.css to fix the issue:
+
+.responsiveMap label {
+width: auto;
+display: inline;
+}
+.responsiveMap img {
+max-width: none;
+max-height: none;
+}
+
+= Dragging the map on a touchscreen device is not working, why? =
+
+The drag functionality is quite an issue.
+The problem is, that when enabled, users will experience problems on touch devices.
+They will be able to scroll over inside the map, but not be able to °overscroll" the map itself.
+
+This can be quite frustrating. So the dragging feature is disabled on touchscreen devices.
+
+== Changelog ==
+
+= 1.1.0 =
+* Enable or disable scrollwheel zooming.
+* Enable or disable map-dragging.
