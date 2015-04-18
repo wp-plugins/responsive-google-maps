@@ -5,7 +5,7 @@ defined('ABSPATH') or die("No script kiddies please!");
 
     Plugin Name: Responsive Google Maps
     Description: This Plug-In displays responsive and configurable Maps by Google Maps in your WordPress Site
-    Version: 1.1.1
+    Version: 1.1.2
     Author: Ilja Zaglov | imbaa Kreativagentur
     Author URI: http://www.imbaa.de
     Plugin URI: https://wordpress.org/plugins/responsive-google-maps/
