@@ -2,8 +2,8 @@
 Contributors: Zaglov, imbaa
 Tags: responsive, google, google maps
 Requires at least: 3.0.1
-Tested up to: 4.1.1
-Stable tag: 1.1.0
+Tested up to: 4.2.1
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,7 +16,7 @@ When the browser-window is resized, the Plug-In automatically recenters the map 
 
 And that’s pretty much it.
 
-How to use:
+**How to use**
 
 The Plug-In requires at leas two values to work: the latitude and the longitude of the location to display
 
@@ -26,11 +26,20 @@ If you need to use the Shortcode inside a theme, just use `<?php do_shortcode('[
 
 See it in action on [imbaa Kreativagentur](http://www.imbaa.de "imbaa Kreativagentur Essen")'s site.
 
-Possible other Parameters:
+**Infowindow**
+
+Version 1.1.1 of Responsive Google Maps is capable of displaying infowindows on the markers location.
+To enable an infowindow simply put your infowindow text inside the [responsive_map] Tag.
+
+You can use HTML if you like.
+
+[responsive_map lat="51.44" lng="7.01"]Infotext goes here[/responsive_map]
+
+**Possible other Parameters:**
 
 
-*   lng: 51.44303  / Longitude
-*   lat: 7.01247 / Latitude
+*   lng: 51.44  / Longitude
+*   lat: 7.01 / Latitude
 *   height = 400px / Height of the Container of the Map
 *   zoom = 10 / Zoom Level of the Map
 *   show_marker = true / Should a marker be displayed?
@@ -43,11 +52,14 @@ Possible other Parameters:
 *   overview_map_control = true / Enable or disable Map Control
 *   map_type (str) = road / Set Map Typ to Road („road“) or satellite („sattelite“)
 *   scrollwheel = true / Enable or disable zooming via scrollwheel
-*   draggable = false / Enable or disable draggable map. On Touchscreen devices dragging is disabled
+*   draggable = false / Enable or disable draggable map. On touchscreen devices dragging is disabled
+*   auto_open_info_window = false / Open info-window automatically, when map is loaded
 
-Coming Soon:
+**Coming up next:**
 
 Custom marker images
+
+
 
 == Installation ==
 
@@ -74,13 +86,28 @@ max-height: none;
 
 The drag functionality is quite an issue.
 The problem is, that when enabled, users will experience problems on touch devices.
-They will be able to scroll over inside the map, but not be able to °overscroll" the map itself.
+They will be able to scroll over inside the map, but not be able to "overscroll" the map itself.
 
 This can be quite frustrating. So the dragging feature is disabled on touchscreen devices.
 
 == Changelog ==
 
+= 1.2.0 =
+* Added loading indicator and RWD-Fix for some of the GoogleMaps control elements
+
+= 1.1.2 =
+* Hotfix: removed some PHP that shouldn't be in the plug-in
+
+= 1.1.1 =
+* Feature: Infowindow display
+* Improvement: Asynchronous Loading of Google Maps API v3 added
+
 = 1.1.0 =
 * Enable or disable scrollwheel zooming.
 * Enable or disable map-dragging.
 * Fixed bug with title not showing on hovering over marker
+
+== Upgrade Notice ==
+
+= 1.1.1 =
+We added the possibility of displaying an info window. ALso the Google Maps library now loads asynchronously and only if not already loaded by other plug-in

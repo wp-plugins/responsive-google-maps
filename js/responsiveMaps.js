@@ -1,6 +1,6 @@
 /*!
  * jQuery Responsive Maps Plug-In
- * version: 1.1.0
+ * version: 1.1.1
  * Requires jQuery v1.5 or later
  * Copyright (c) 2015 Ilja Zaglov | imbaa Kreativagentur | http://www.imbaa.de
  * Licensed under GPL
@@ -24,6 +24,9 @@ var responsiveMap = function(mapID){
 
 
     self.init = function() {
+
+
+
 
 
         var args = element.data();
@@ -87,7 +90,6 @@ var responsiveMap = function(mapID){
 
 
 
-
         var mapOptions = {
             zoom: parseInt(args.zoom),
             center: new google.maps.LatLng(args.lat, args.lng),
@@ -111,15 +113,56 @@ var responsiveMap = function(mapID){
         self.map = new google.maps.Map(document.getElementById(mapID), mapOptions);
 
 
+        if(args.infoWindowText != ''){
+
+            self.infoWindow = new google.maps.InfoWindow();
+
+            self.infoWindow.setOptions({
+                content: "<div>"+args.infoWindowText+"</div>",
+                position: new google.maps.LatLng(args.lat, args.lng)
+            });
+        }
+
+
+
         if(args.showmarker == true){
 
-            new google.maps.Marker({
+            self.marker = new google.maps.Marker({
                 position: new google.maps.LatLng(args.lat, args.lng),
                 map: self.map,
                 title: args.title
             });
 
+
+            if(args.infoWindowText != ''){
+
+
+                google.maps.event.addListener(self.marker, 'click', function() {
+                    self.infoWindow.open(self.map,self.marker);
+                });
+
+                if(args.autoopeninfowindow == true){
+
+                    self.infoWindow.open(self.map,self.marker);
+
+                }
+
+            }
+
+
+
+
+        } else {
+
+            if(args.infoWindowText != ''){
+
+                self.infoWindow.open(self.map);
+
+            }
+
         }
+
+
 
 
         $(window).bind('resize',function(){
@@ -132,6 +175,15 @@ var responsiveMap = function(mapID){
 
 
 
+
+
+
+        $(element).removeClass('loading');
+
+
+
+
+
     }
 
     self.init(mapID);
@@ -139,21 +191,41 @@ var responsiveMap = function(mapID){
 }
 
 
-$ = jQuery;
+function responsive_map_load_google() {
 
-$(document).ready(function(){
+    if (typeof google === 'undefined') {
+
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp' +
+        '&signed_in=true&callback=responsive_map_initialize';
+        document.body.appendChild(script);
+
+    } else {
+
+        responsive_map_initialize();
+
+    }
+}
 
 
-    $('.responsiveMap').each(function(){
+function responsive_map_initialize(){
+    $ = jQuery;
+
+    $(document).ready(function(){
 
 
-        new responsiveMap($(this).attr('id'));
+        $('.responsiveMap').each(function(){
+
+
+            new responsiveMap($(this).attr('id'));
+
+
+        });
 
 
     });
+}
 
 
-});
-
-
-
+window.onload = responsive_map_load_google;

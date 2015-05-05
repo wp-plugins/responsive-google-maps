@@ -5,7 +5,7 @@ defined('ABSPATH') or die("No script kiddies please!");
 
     Plugin Name: Responsive Google Maps
     Description: This Plug-In displays responsive and configurable Maps by Google Maps in your WordPress Site
-    Version: 1.1.0
+    Version: 1.2.0
     Author: Ilja Zaglov | imbaa Kreativagentur
     Author URI: http://www.imbaa.de
     Plugin URI: https://wordpress.org/plugins/responsive-google-maps/
@@ -39,22 +39,32 @@ class responsive_maps {
 
         add_shortcode( 'responsive_map', array($this,'responsive_map_func') );
         add_action('init',array($this,'register_scripts'));
+        add_action( 'wp_enqueue_scripts', array($this,'enqueue_styles') );
 
     }
 
 
     public function register_scripts(){
 
-        wp_register_script( 'googleMaps', 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=visualization' );
-        wp_register_script( 'responsiveMaps', plugins_url( '/js/responsiveMaps.js', __FILE__ ),array('jquery','googleMaps'),'1.0.3',true);
+        wp_register_script( 'responsiveMaps', plugins_url( '/js/responsiveMaps.js', __FILE__ ),array('jquery'),'1.1.1',true);
 
     }
 
-    public function responsive_map_func($args){
+    public function enqueue_styles(){
+
+        wp_register_style( 'responsive-google-maps', plugins_url( 'responsive-google-maps/css/responsive-google-maps.css' ) );
+        wp_enqueue_style( 'responsive-google-maps' );
+
+    }
+
+    public function responsive_map_func($args,$content){
+
+
+
 
         $args = shortcode_atts( array(
-            'lat' => 50.9847679,
-            'lng' => 11.0298799,
+            'lat' => 50.44,
+            'lng' => 7.01,
             'style' => null,
             'zoom' => 10,
             'title' => null,
@@ -68,18 +78,24 @@ class responsive_maps {
             'map_type' => 'road',
             'pan_control' => 1,
             'draggable' => 0,
-            'scrollwheel' => 1
+            'scrollwheel' => 1,
+            'auto_open_info_window' => 0
 
         ), $args );
 
 
+       /* echo "<pre>";
+
+        print_r($args);
+
+        echo "</pre>";*/
 
         $id = 'responsiveMap'.md5(time().microtime());
 
         wp_enqueue_script('responsiveMaps');
 
         $output = '<div
-                            class="responsiveMap"
+                            class="responsiveMap loading"
                             id="'.$id.'"
                             style="height:'.$args['height'].';"
                             data-title="'.$args['title'].'"
@@ -97,6 +113,8 @@ class responsive_maps {
                             data-pancontrol="'.$args['pan_control'].'"
                             data-scrollwheel="'.$args['scrollwheel'].'"
                             data-draggable="'.$args['draggable'].'"
+                            data-info-window-text="'.$content.'"
+                            data-autoOpenInfoWindow="'.$args['auto_open_info_window'].'"
                 ></div>';
 
 
