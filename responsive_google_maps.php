@@ -5,7 +5,7 @@ defined('ABSPATH') or die("No script kiddies please!");
 
     Plugin Name: Responsive Google Maps
     Description: This Plug-In displays responsive and configurable Maps by Google Maps in your WordPress Site
-    Version: 1.1.2
+    Version: 1.2.0
     Author: Ilja Zaglov | imbaa Kreativagentur
     Author URI: http://www.imbaa.de
     Plugin URI: https://wordpress.org/plugins/responsive-google-maps/
@@ -39,15 +39,21 @@ class responsive_maps {
 
         add_shortcode( 'responsive_map', array($this,'responsive_map_func') );
         add_action('init',array($this,'register_scripts'));
+        add_action( 'wp_enqueue_scripts', array($this,'enqueue_styles') );
 
     }
 
 
     public function register_scripts(){
 
-        //wp_register_script( 'googleMaps', 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=visualization' );
         wp_register_script( 'responsiveMaps', plugins_url( '/js/responsiveMaps.js', __FILE__ ),array('jquery'),'1.1.1',true);
-        //wp_register_script( 'responsiveMaps', plugins_url( '/js/responsiveMaps.js', __FILE__ ),array('jquery','googleMaps'),'1.0.3',true);
+
+    }
+
+    public function enqueue_styles(){
+
+        wp_register_style( 'responsive-google-maps', plugins_url( 'responsive-google-maps/css/responsive-google-maps.css' ) );
+        wp_enqueue_style( 'responsive-google-maps' );
 
     }
 
@@ -89,7 +95,7 @@ class responsive_maps {
         wp_enqueue_script('responsiveMaps');
 
         $output = '<div
-                            class="responsiveMap"
+                            class="responsiveMap loading"
                             id="'.$id.'"
                             style="height:'.$args['height'].';"
                             data-title="'.$args['title'].'"
