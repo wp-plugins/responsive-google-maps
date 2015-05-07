@@ -178,6 +178,7 @@ var responsiveMap = function(mapID){
 
 
 
+        $(element).removeClass('loading');
 
 
 

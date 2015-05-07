@@ -3,7 +3,7 @@ Contributors: Zaglov, imbaa
 Tags: responsive, google, google maps
 Requires at least: 3.0.1
 Tested up to: 4.2.1
-Stable tag: 1.1.2
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,7 +16,7 @@ When the browser-window is resized, the Plug-In automatically recenters the map 
 
 And that’s pretty much it.
 
-== How to use ==
+**How to use**
 
 The Plug-In requires at leas two values to work: the latitude and the longitude of the location to display
 
@@ -59,6 +59,8 @@ You can use HTML if you like.
 
 Custom marker images
 
+
+
 == Installation ==
 
 1. Upload the Plug-In Direcotry into the `/wp-content/plugins/` directory
@@ -89,6 +91,12 @@ They will be able to scroll over inside the map, but not be able to "overscroll"
 This can be quite frustrating. So the dragging feature is disabled on touchscreen devices.
 
 == Changelog ==
+
+= 1.2.1 =
+* Changed Plug-In name to prevent update-problems with samenamed plug-in from Codecanyon
+
+= 1.2.0 =
+* Added loading indicator and RWD-Fix for some of the GoogleMaps control elements
 
 = 1.1.2 =
 * Hotfix: removed some PHP that shouldn't be in the plug-in
