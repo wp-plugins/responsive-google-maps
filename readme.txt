@@ -2,8 +2,8 @@
 Contributors: Zaglov, imbaa
 Tags: responsive, google, google maps
 Requires at least: 3.0.1
-Tested up to: 4.2.1
-Stable tag: 1.2.1
+Tested up to: 4.2.2
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -91,6 +91,9 @@ They will be able to scroll over inside the map, but not be able to "overscroll"
 This can be quite frustrating. So the dragging feature is disabled on touchscreen devices.
 
 == Changelog ==
+
+= 1.2.2 =
+* Minor Bugfixes
 
 = 1.2.1 =
 * Changed Plug-In name to prevent update-problems with samenamed plug-in from Codecanyon
